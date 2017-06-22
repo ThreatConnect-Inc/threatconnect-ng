@@ -1,0 +1,31 @@
+# App files
+
+threatconnect-ng/*
+lib/.baseDir.ts
+.tscache
+
+# Node generated files
+
+node_modules
+npm-debug.log
+
+# OS generated files
+
+Thumbs.db
+.DS_Store
+
+# Ignored files
+
+*.js
+*.map
+*.d.ts
+
+# IDE files
+
+.c9
+
+# Other nonsense
+
+00__*
+bcs*
+test
