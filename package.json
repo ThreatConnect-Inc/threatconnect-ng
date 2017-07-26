@@ -73,10 +73,6 @@
     "type": "git",
     "url": "https://github.com/ThreatConnect-Inc/threatconnect-ng"
   },
-  "scripts": {
-    "postinstall": "tsc",
-    "test": "npm test"
-  },
   "typings": "dist/main.d.ts",
   "version": "0.1.0"
 }
