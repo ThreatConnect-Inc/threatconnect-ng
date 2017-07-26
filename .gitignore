@@ -1,4 +1,5 @@
 # App files
+.idea/
 
 threatconnect-ng/*
 lib/.baseDir.ts
