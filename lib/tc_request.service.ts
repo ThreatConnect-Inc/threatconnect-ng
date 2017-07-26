@@ -23,7 +23,7 @@
 //     SpacesBaseService,
 //     SpacesLoggingService
 // }
-// from 'spaces-ng/dist/main';
+// from 'spaces-ng/main';
 
 // import {
 //     TcUtilityService
