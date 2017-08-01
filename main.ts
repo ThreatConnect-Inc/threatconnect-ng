@@ -7,7 +7,7 @@ import { TcOwnerService } from './lib/tc_owner.service';
 import { TcSecurityLabelService } from './lib/tc_security_labels.service';
 import { TcUtilityService } from './lib/tc_utility.service';
 
-import { SpacesModule } from 'spaces-ng/dist/main';
+import { SpacesModule } from 'spaces-ng/main';
 
 @NgModule({
     imports: [
