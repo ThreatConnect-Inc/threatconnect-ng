@@ -4,7 +4,7 @@ import {
     SpacesLoggingService,
     SpacesRequestService
 }
-from 'spaces-ng/main';
+from 'spaces-ng';
 import { Owner } from './entities';
 import { RESOURCE_TYPE } from './tc_resource_type';
 import { Observable } from 'rxjs/Rx';
