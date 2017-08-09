@@ -20,19 +20,18 @@ import { SpacesModule } from 'spaces-ng/main';
         TcOwnerService,
         TcSecurityLabelService,
         TcUtilityService,
+    ],
+    exports: [
+        TcExchangeDbService,
+        TcGroupService,
+        TcIndicatorService,
+        TcOwnerService,
+        TcSecurityLabelService,
+        TcUtilityService,
     ]
 })
-class TcModule { }
+export class TcModule { }
 
-export {
-    TcExchangeDbService,
-    TcGroupService,
-    TcIndicatorService,
-    TcOwnerService,
-    TcSecurityLabelService,
-    TcUtilityService,
-    TcModule,
-};
 
 export * from './lib/tc_resource_type';
 export * from './lib/entities';
