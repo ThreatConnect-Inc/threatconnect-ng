@@ -12,6 +12,8 @@ import { SpacesModule } from 'spaces-ng/main';
 @NgModule({
     imports: [
         SpacesModule,
+    ],
+    providers: [
         TcExchangeDbService,
         TcGroupService,
         TcIndicatorService,
