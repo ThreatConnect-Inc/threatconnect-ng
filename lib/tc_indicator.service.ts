@@ -70,6 +70,33 @@ export class TcIndicatorService {
                 this.handleError);
     }
 
+    public getAdditionalData(
+        id: string,
+        type: string,
+        owner: string
+    ): Observable<any> {
+        this.logging.debug('id', id);
+        this.logging.debug('type', type);
+
+        let resourceType = RESOURCE_TYPE[type];
+        let url = [
+            this.spacesBase.tcApiPath,
+            resourceType.uri,
+            id
+        ].join('/');
+
+        let tcRequest = this.request
+            .resetOptions()
+            .url(url)
+            .header('Authorization', 'TC-Token ' + this.spacesBase.tcToken)
+            .param('owner', owner)
+            .method('GET');
+
+        return tcRequest.request()
+            .map(res => res.json().data || {},
+                this.handleError);
+    }
+
     public getAll(
         type: string = 'Indicator',
         resultLimit: number = 500,
