@@ -90,7 +90,7 @@ export class TcIndicatorService {
             .url(url)
             .header('Authorization', 'TC-Token ' + this.spacesBase.tcToken)
             .param('owner', owner)
-            .param('includeAdditional', true)
+            .param('includeAdditional', 'true')
             .method('GET');
 
         return tcRequest.request()
