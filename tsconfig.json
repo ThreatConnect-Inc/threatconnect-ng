@@ -21,7 +21,7 @@
     "compileOnSave": false,
     "buildOnSave": false,
     "files": [
-        "./main.ts"
+        "./lib/TcModule.ts"
     ],
     "exclude": [
         "dist",
