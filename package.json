@@ -15,7 +15,7 @@
       "name": "Chris Blades"
     }
   ],
-  "dependencies": {
+  "peerDependencies": {
     "spaces-ng": "0.3.x"
   },
   "description": "ThreatConnect SDK for Angular.",
