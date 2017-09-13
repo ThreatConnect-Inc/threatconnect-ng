@@ -16,7 +16,7 @@
     }
   ],
   "dependencies": {
-    "spaces-ng": "git+https://github.com/ThreatConnect-Inc/spaces-ng.git#0.3.0"
+    "spaces-ng": "0.3.x"
   },
   "description": "ThreatConnect SDK for Angular.",
   "devDependencies": {
