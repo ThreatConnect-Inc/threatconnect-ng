@@ -109,7 +109,8 @@ export class TcExchangeDbService {
         domain: string,
         typeName: string,
         searchCommand: string,
-        owner: any = undefined
+        owner: any = undefined,
+        body: string = undefined
     ): Observable<any> {
         this.logging.debug('domain', domain);
         this.logging.debug('typeName', typeName);
@@ -131,6 +132,10 @@ export class TcExchangeDbService {
 
         if (domain === 'organization' && owner) {
             tcRequest.param('owner', owner);
+        }
+
+        if (body) {
+            tcRequest.body(body).header('Content-Type', 'Application/JSON');
         }
 
         return tcRequest.request()
