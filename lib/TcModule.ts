@@ -6,6 +6,7 @@ import { TcIndicatorService } from './tc_indicator.service';
 import { TcOwnerService } from './tc_owner.service';
 import { TcSecurityLabelService } from './tc_security_labels.service';
 import { TcUtilityService } from './tc_utility.service';
+import { TcWhoAmIService } from './tc_whoami.service';
 
 import { SpacesModule } from 'spaces-ng';
 
@@ -20,6 +21,7 @@ import { SpacesModule } from 'spaces-ng';
         TcOwnerService,
         TcSecurityLabelService,
         TcUtilityService,
+        TcWhoAmIService
     ]
 })
 export class TcModule { }
