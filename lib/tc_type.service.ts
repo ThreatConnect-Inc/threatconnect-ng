@@ -27,7 +27,7 @@ export class TcTypeService {
 
         let url = [
             this.spacesBase.tcApiPath,
-            'v2/indicatorTypes'
+            'v2/types/indicatorTypes'
         ].join('/');
 
         let tcRequest = this.request
@@ -49,7 +49,7 @@ export class TcTypeService {
 
         let url = [
             this.spacesBase.tcApiPath,
-            'v2/indicatorTypes',
+            'v2/types/indicatorTypes',
             type
         ].join('/');
 
