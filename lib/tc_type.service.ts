@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 import {
     SpacesBaseService,
     SpacesLoggingService,
@@ -23,7 +24,7 @@ export class TcTypeService {
      *
      * @returns {Observable<Object>} The JSON results from ThreatConnect
      */
-    public getAll(): Observable<Object> {
+    public getAll(): Observable<Response> {
 
         let url = [
             this.spacesBase.tcApiPath,
@@ -45,7 +46,7 @@ export class TcTypeService {
      *
      * @returns {Observable<Object>} The JSON results from ThreatConnect
      */
-    public getForType(type: string, getAdditionalDetails: boolean = false): Observable<Object> {
+    public getForType(type: string, getAdditionalDetails: boolean = false): Observable<Response> {
 
         let url = [
             this.spacesBase.tcApiPath,
