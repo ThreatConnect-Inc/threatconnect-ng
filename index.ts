@@ -5,4 +5,5 @@ export { TcOwnerService } from './lib/tc_owner.service';
 export { TcSecurityLabelService } from './lib/tc_security_labels.service';
 export { TcUtilityService } from './lib/tc_utility.service';
 export { TcWhoAmIService } from './lib/tc_whoami.service';
+export { TcTypeService } from './lib/tc_type.service';
 export { TcModule } from './lib/TcModule';
