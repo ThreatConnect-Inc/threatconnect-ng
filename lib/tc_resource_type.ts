@@ -181,5 +181,20 @@ export const RESOURCE_TYPE = {
         'dataField': 'victimWebSite',
         'type': 'WebSite',
         'uri': 'v2/victimAssets/webSites',
-    }
+    },
+    Event: {
+        'dataField': 'event',
+        'type': 'Event',
+        'uri': 'v2/groups/events',
+    },
+    Report: {
+        'dataField': 'report',
+        'type': 'Report',
+        'uri': 'v2/groups/reports',
+    },
+    IntrusionSet: {
+        'dataField': 'intrusionSet',
+        'type': 'IntrusionSet',
+        'uri': 'v2/groups/intrusionsets'
+    },
 };
