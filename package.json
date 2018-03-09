@@ -20,18 +20,8 @@
   },
   "description": "ThreatConnect SDK for Angular.",
   "devDependencies": {
-    "@angular/common": "4.0.0",
-    "@angular/compiler": "4.0.0",
-    "@angular/core": "4.0.0",
-    "@angular/forms": "4.0.0",
-    "@angular/http": "4.0.0",
-    "@angular/platform-browser": "4.2.6",
-    "@angular/platform-browser-dynamic": "4.0.0",
-    "@angular/router": "4.0.0",
-    "@angular/upgrade": "4.0.0",
     "@compodoc/compodoc": "^1.0.0-beta.14",
     "@types/core-js": "^0.9.41",
-    "codelyzer": "^2.0.0-beta.4",
     "core-js": "^2.4.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
@@ -44,7 +34,7 @@
     "rxjs": "5.1.0",
     "tslint": "4.4.2",
     "typedocs": "^0.6.3",
-    "typescript": "2.1.5",
+    "typescript": "^2.6.1",
     "zone.js": "^0.7.2"
   },
   "homepage": "https://github.com/ThreatConnect-Inc/threatconnect-ng",
@@ -74,5 +64,23 @@
     "url": "https://github.com/ThreatConnect-Inc/threatconnect-ng"
   },
   "typings": "dist/main.d.ts",
-  "version": "0.2.0"
+  "version": "0.2.0",
+  "dependencies": {
+    "@angular/animations": "^5.2.5",
+    "@angular/common": "^5.2.5",
+    "@angular/compiler": "^5.2.5",
+    "@angular/compiler-cli": "^5.2.5",
+    "@angular/core": "^5.2.5",
+    "@angular/forms": "^5.2.5",
+    "@angular/http": "^5.2.5",
+    "@angular/platform-browser": "^5.2.5",
+    "@angular/platform-browser-dynamic": "^5.2.5",
+    "@angular/platform-server": "^5.2.5",
+    "@angular/router": "^5.2.5",
+    "@angular/upgrade": "^5.2.5",
+    "codelyzer": "^4.1.0",
+    "rxjs": "^5.5.6",
+    "tslint": "^4.5.1",
+    "zone.js": "^0.8.20"
+  }
 }
