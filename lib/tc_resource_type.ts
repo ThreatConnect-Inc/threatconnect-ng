@@ -196,5 +196,5 @@ export const RESOURCE_TYPE = {
         'dataField': 'intrusionSet',
         'type': 'IntrusionSet',
         'uri': 'v2/groups/intrusionsets'
-    },
+    }
 };

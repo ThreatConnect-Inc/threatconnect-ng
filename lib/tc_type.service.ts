@@ -7,15 +7,17 @@ import {
 }
     from 'spaces-ng';
 import { Observable } from 'rxjs/Rx';
+import {TCApiBaseService} from "./tc_api_base.service";
 
 
 @Injectable()
-export class TcTypeService {
+export class TcTypeService extends TCApiBaseService {
     constructor(
-        private logging: SpacesLoggingService,
-        private request: SpacesRequestService,
-        private spacesBase: SpacesBaseService
+        protected logging: SpacesLoggingService,
+        protected request: SpacesRequestService,
+        protected spacesBase: SpacesBaseService
     ) {
+        super(logging, request, spacesBase);
         this.logging.moduleColor('#f26724', '#fff', 'TcIndicatorService');
     }
 
@@ -24,7 +26,7 @@ export class TcTypeService {
      *
      * @returns {Observable<Object>} The JSON results from ThreatConnect
      */
-    public getAll(): Observable<Response> {
+    public getIndicatorTypes(): Observable<Response> {
 
         let url = [
             this.spacesBase.tcApiPath,
@@ -46,7 +48,7 @@ export class TcTypeService {
      *
      * @returns {Observable<Object>} The JSON results from ThreatConnect
      */
-    public getForType(type: string, getAdditionalDetails: boolean = false): Observable<Response> {
+    public getIndicatorType(type: string, getAdditionalDetails: boolean = false): Observable<Response> {
 
         let url = [
             this.spacesBase.tcApiPath,
@@ -68,4 +70,6 @@ export class TcTypeService {
 
         return tcRequest.request();
     }
+
+
 }
