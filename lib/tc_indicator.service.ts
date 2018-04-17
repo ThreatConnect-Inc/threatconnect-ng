@@ -59,13 +59,13 @@ export class TcIndicatorService {
      * @param id the value of the indicator, e.g., '192.168.1.1', 'wwww.google.com', etc.
      * @param type the type of the indicator, e.g., 'Address', 'Host', etc.
      * @param owner the ThreatConnect owner to read the indicator from.
-     * @returns {Observable<Object>} The JSON response from ThreatConnect
+     * @returns {Observable<any>} The JSON response from ThreatConnect
      */
     public getById(
         id: string,
         type: string,
         owner: string
-    ): Observable<Object> {
+    ): Observable<any> {
         this.logging.debug('id', id);
         this.logging.debug('type', type);
         
@@ -94,7 +94,7 @@ export class TcIndicatorService {
      * @param id the value of the indicator, e.g., '192.168.1.1', 'wwww.google.com', etc.
      * @param type the type of the indicator, e.g., 'Address', 'Host', etc.
      * @param owner the ThreatConnect owner to read the indicator from.
-     * @returns {Observable<Object>} The JSON response from ThreatConnect
+     * @returns {Observable<any>} The JSON response from ThreatConnect
      */
     public getAdditionalData(
         id: string,
@@ -132,7 +132,7 @@ export class TcIndicatorService {
      * @param resultStart Results index to start at.
      * @param owner The ThreatConnect owner to read from.
      * @param normalize Flag to enable normalizing indicators.
-     * @returns {Observable<Object>} The JSON results from ThreatConnect
+     * @returns {Observable<any>} The JSON results from ThreatConnect
      */
     public getAll(
         type: string = 'Indicator',
@@ -140,7 +140,7 @@ export class TcIndicatorService {
         resultStart: number = 0,
         owner: any = undefined,
         normalize: boolean = false
-    ): Observable<Object> {
+    ): Observable<any> {
         this.logging.debug('type', type);
         this.logging.debug('normalize', normalize);
         
