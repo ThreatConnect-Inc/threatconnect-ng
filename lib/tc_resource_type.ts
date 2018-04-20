@@ -120,17 +120,23 @@ export const RESOURCE_TYPE = {
         'type': 'Signature',
         'uri': 'v2/groups/signatures',
     },
+
+    Tag: {
+        'dataField': 'name',
+        'type': 'Tag',
+        'uri': 'v2/tags',
+    },
+
+    Task: {
+        'dataField': 'task',
+        'type': 'Task',
+        'uri': 'v2/tasks',
+    },
     
     Threat: {
         'dataField': 'threat',
         'type': 'Threat',
         'uri': 'v2/groups/threats',
-    },
-    
-    Task: {
-        'dataField': 'task',
-        'type': 'Task',
-        'uri': 'v2/tasks',
     },
     
     Url: {
