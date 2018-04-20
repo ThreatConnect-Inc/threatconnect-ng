@@ -20,10 +20,26 @@ export class TcGroupService {
         this.logging.moduleColor('#f26724', '#fff', 'TcGroupService');
     }
 
+    private handleIncludes(
+        tcRequest: SpacesRequestService,
+        includeAttributes: boolean = false,
+        includeTags: boolean = false
+    ) {
+        if (includeAttributes) {
+            tcRequest.param('includeAttributes', true);
+        }
+        if (includeTags) {
+            tcRequest.param('includeTags', true);
+        }
+        return tcRequest;
+    }
+
     public getById(
         id: string,
         type: string,
-        owner: string
+        owner: string,
+        includeAttributes: boolean = false,
+        includeTags: boolean = false
     ): Observable<any> {
         this.logging.debug('id', id);
         
@@ -41,6 +57,8 @@ export class TcGroupService {
             .param('owner', owner)
             .method('GET');
 
+        tcRequest = this.handleIncludes(tcRequest, includeAttributes, includeTags);
+
         return tcRequest.request()
             .map(res => res.json().data[resourceType.dataField] || {},
                  this.handleError);
@@ -50,7 +68,9 @@ export class TcGroupService {
         resultLimit: number = 500,
         resultStart: number = 0,
         owner: any = undefined,
-        type: string = 'Group'
+        type: string = 'Group',
+        includeAttributes: boolean = false,
+        includeTags: boolean = false
     ): Observable<any> {
         this.logging.debug('owner', owner);
         
@@ -72,6 +92,8 @@ export class TcGroupService {
             // tcRequest.param('owner', encodeURIComponent(owner));
             tcRequest.param('owner', owner);
         }
+
+        tcRequest = this.handleIncludes(tcRequest, includeAttributes, includeTags);
 
         return tcRequest.request()
             .map(res => {
