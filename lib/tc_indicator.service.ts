@@ -18,7 +18,6 @@ import { TCApiBaseService } from './tc_api_base.service';
  */
 export class TcIndicatorService extends TCApiBaseService {
 
-
     constructor(
         protected logging: SpacesLoggingService,
         protected request: SpacesRequestService,
@@ -26,6 +25,29 @@ export class TcIndicatorService extends TCApiBaseService {
     ) {
         super(logging, request, spacesBase);
         this.logging.moduleColor('#f26724', '#fff', 'TcIndicatorService');
+    }
+
+    /**
+     * Map the 'summary' field of the given indicator to the correct Indicator Field required by the API. For example, given the indicator: {..., 'summary': '1.2.3.4', ...}, this function will return {..., 'ip': '1.2.3.4', ...} so that the IP address is created correctly.
+     *
+     * @param resourceType The resource type from https://github.com/ThreatConnect-Inc/threatconnect-ng/blob/master/lib/tc_resource_type.ts
+     * @param indicatorSummary A string representing the indicator being created
+     * @returns string The name of the indicator field for the given indicator
+     */
+    private getIndicatorField(resourceType: any, indicatorSummary: string) {
+        if (resourceType.indicatorFields.length === 1) {
+            return resourceType.indicatorFields[0];
+        } else {
+            if (resourceType.type === 'File') {
+                if (indicatorSummary.length === 32) {
+                    return 'md5';
+                } else if (indicatorSummary.length === 40) {
+                    return 'sha1';
+                } else if (indicatorSummary.length === 64) {
+                    return 'sha256';
+                }
+            }
+        }
     }
 
     /**
@@ -41,6 +63,11 @@ export class TcIndicatorService extends TCApiBaseService {
             this.spacesBase.tcApiPath,
             resourceType.uri
         ].join('/');
+
+        if (indicator.summary) {
+            let indicatorField = this.getIndicatorField(resourceType, indicator.summary);
+            indicator[indicatorField] = indicator.summary;
+        }
 
         let tcRequest = this.request
             .resetOptions()
