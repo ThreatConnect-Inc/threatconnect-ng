@@ -10,6 +10,7 @@ import { RESOURCE_TYPE } from './tc_resource_type';
 import { Indicator } from './entities';
 import { Observable } from 'rxjs/Rx';
 import { TCApiBaseService } from './tc_api_base.service';
+import { TcUtilityService } from './tc_utility.service';
 
 
 @Injectable()
@@ -62,12 +63,16 @@ export class TcIndicatorService extends TCApiBaseService {
      * @param id the value of the indicator, e.g., '192.168.1.1', 'wwww.google.com', etc.
      * @param type the type of the indicator, e.g., 'Address', 'Host', etc.
      * @param owner the ThreatConnect owner to read the indicator from.
+     * @param includeAttributes whether or not to retrieve attributes for the indicator.
+     * @param includeTags whether or not to retrieve tags for the indicator.
      * @returns {Observable<Object>} The JSON response from ThreatConnect
      */
     public getById(
         id: string,
         type: string,
-        owner: string
+        owner: string,
+        includeAttributes: boolean = false,
+        includeTags: boolean = false
     ): Observable<Object> {
         this.logging.debug(`${arguments}`);
         this.logging.debug('type', type);
@@ -85,6 +90,8 @@ export class TcIndicatorService extends TCApiBaseService {
             .header('Authorization', 'TC-Token ' + this.spacesBase.tcToken)
             .param('owner', owner)
             .method('GET');
+
+        tcRequest = TcUtilityService.handleIncludes(tcRequest, includeAttributes, includeTags);
 
         return tcRequest.request()
             .map(res => res.json().data[resourceType.dataField] || {},
@@ -150,6 +157,8 @@ export class TcIndicatorService extends TCApiBaseService {
      * @param resultStart Results index to start at.
      * @param owner The ThreatConnect owner to read from.
      * @param normalize Flag to enable normalizing indicators.
+     * @param includeAttributes whether or not to retrieve attributes for the indicator.
+     * @param includeTags whether or not to retrieve tags for the indicator.
      * @returns {Observable<Object>} The JSON results from ThreatConnect
      */
     public getAll(
@@ -157,7 +166,9 @@ export class TcIndicatorService extends TCApiBaseService {
         resultLimit: number = 500,
         resultStart: number = 0,
         owner: any = undefined,
-        normalize: boolean = false
+        normalize: boolean = false,
+        includeAttributes: boolean = false,
+        includeTags: boolean = false,
     ): Observable<Object> {
         this.logging.debug('type', type);
         this.logging.debug('normalize', normalize);
@@ -180,6 +191,8 @@ export class TcIndicatorService extends TCApiBaseService {
             // tcRequest.param('owner', encodeURIComponent(owner));
             tcRequest.param('owner', owner);
         }
+
+        tcRequest = TcUtilityService.handleIncludes(tcRequest, includeAttributes, includeTags);
 
         return tcRequest.request()
             .map(res => {

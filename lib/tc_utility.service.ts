@@ -4,6 +4,11 @@ import {
     PipeTransform
 } from '@angular/core';
 
+import {
+    SpacesRequestService
+}
+from 'spaces-ng';
+
 @Injectable()
 export class TcUtilityService {
     // public static x2js = new X2JS();
@@ -41,6 +46,20 @@ export class TcUtilityService {
 
         return results === null ? '' : decodeURIComponent(
             results[1].replace(/\+/g, ' '));
+    }
+
+    static handleIncludes(
+        tcRequest: SpacesRequestService,
+        includeAttributes: boolean = false,
+        includeTags: boolean = false
+    ) {
+        if (includeAttributes) {
+            tcRequest.param('includeAttributes', true);
+        }
+        if (includeTags) {
+            tcRequest.param('includeTags', true);
+        }
+        return tcRequest;
     }
 }
 

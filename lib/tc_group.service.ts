@@ -8,6 +8,7 @@ import {
 from 'spaces-ng';
 import { RESOURCE_TYPE } from './tc_resource_type';
 import { Observable } from 'rxjs/Rx';
+import { TcUtilityService } from './tc_utility.service';
 
 @Injectable()
 export class TcGroupService {
@@ -18,20 +19,6 @@ export class TcGroupService {
         private spacesBase: SpacesBaseService
     ) {
         this.logging.moduleColor('#f26724', '#fff', 'TcGroupService');
-    }
-
-    private handleIncludes(
-        tcRequest: SpacesRequestService,
-        includeAttributes: boolean = false,
-        includeTags: boolean = false
-    ) {
-        if (includeAttributes) {
-            tcRequest.param('includeAttributes', true);
-        }
-        if (includeTags) {
-            tcRequest.param('includeTags', true);
-        }
-        return tcRequest;
     }
 
     public getById(
@@ -57,7 +44,7 @@ export class TcGroupService {
             .param('owner', owner)
             .method('GET');
 
-        tcRequest = this.handleIncludes(tcRequest, includeAttributes, includeTags);
+        tcRequest = TcUtilityService.handleIncludes(tcRequest, includeAttributes, includeTags);
 
         return tcRequest.request()
             .map(res => res.json().data[resourceType.dataField] || {},
@@ -93,7 +80,7 @@ export class TcGroupService {
             tcRequest.param('owner', owner);
         }
 
-        tcRequest = this.handleIncludes(tcRequest, includeAttributes, includeTags);
+        tcRequest = TcUtilityService.handleIncludes(tcRequest, includeAttributes, includeTags);
 
         return tcRequest.request()
             .map(res => {
